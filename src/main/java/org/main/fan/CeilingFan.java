@@ -1,16 +1,13 @@
 package org.main.fan;
-import org.main.datecomparison.DateComparison;
+import org.main.datecomparison.DateComparisonUtils;
+
+import java.time.LocalDate;
 
 public class CeilingFan implements Fan {
-    private final DateComparison dateComparison;
     private int speed;
     private String direction = "Normal";
     private boolean reversed;
     private static final int MAX_SPEED = 3;
-
-    public CeilingFan() {
-        this.dateComparison = new DateComparison();
-    }
 
     @Override
     public void pullSpeedCord() {
@@ -49,7 +46,7 @@ public class CeilingFan implements Fan {
     }
 
     private boolean checkAndHandleChristmas(){
-        if(dateComparison.isTodayChristmas()){
+        if(DateComparisonUtils.isDateRestricted(LocalDate.now())){
             this.speed = 0;
             System.out.println("Fan has been turned off for Christmas");
             return true;
