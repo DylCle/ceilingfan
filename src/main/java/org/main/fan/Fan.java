@@ -1,4 +1,4 @@
-package org.fan;
+package org.main.fan;
 
 public interface Fan {
 

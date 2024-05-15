@@ -1,5 +1,4 @@
-package org.datecomparison;
-import java.time.MonthDay;
+package org.main.datecomparison;
 
 public interface Date {
     boolean isTodayChristmas();

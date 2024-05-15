@@ -1,4 +1,4 @@
-package org.datecomparison;
+package org.main.datecomparison;
 import java.time.LocalDate;
 import java.time.MonthDay;
 

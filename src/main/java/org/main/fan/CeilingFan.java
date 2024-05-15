@@ -1,12 +1,11 @@
-package org.fan;
-import org.datecomparison.DateComparison;
+package org.main.fan;
+import org.main.datecomparison.DateComparison;
 
 public class CeilingFan implements Fan {
     private final DateComparison dateComparison;
     private int speed;
     private String direction = "Normal";
     private boolean reversed;
-
     private static final int MAX_SPEED = 3;
 
     public CeilingFan() {
