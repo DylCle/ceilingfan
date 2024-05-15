@@ -1,56 +1,62 @@
 package org.main.fan;
 import org.main.datecomparison.DateComparisonUtils;
-
 import java.time.LocalDate;
 
 public class CeilingFan implements Fan {
-    private int speed;
-    private String direction = "Normal";
-    private boolean reversed;
     private static final int MAX_SPEED = 3;
-
+    private int speed;
+    private Direction direction;
+    private boolean reversed;
+    public CeilingFan() {
+        this.speed = 0;
+        this.direction = Direction.CLOCKWISE;
+    }
+    private boolean checkAndHandleChristmas(){
+        if(DateComparisonUtils.isDateRestricted(LocalDate.now())){
+            setSpeed(0);
+            System.out.println("Fan has been turned off for Christmas");
+            return true;
+        }
+        return false;
+    }
     @Override
     public void pullSpeedCord() {
         if(checkAndHandleChristmas())
             return;
         if (speed == MAX_SPEED) {
-            this.speed = 0;
+            setSpeed(0);
             System.out.println("Fan has been turned off");
         } else {
-            this.speed++;
-            System.out.println("Fan speed set to " + this.speed);
+            setSpeed(speed + 1);
+            System.out.println("Fan speed set to " + getSpeed());
         }
     }
-
     @Override
     public void pullReverseCord() {
         if(checkAndHandleChristmas())
-                return;
+            return;
         this.reversed = !this.reversed;
         if (this.reversed) {
-            this.direction = "Reversed";
+            setDirection(Direction.COUNTERCLOCKWISE);
         } else {
-            this.direction = "Normal";
+            setDirection(Direction.CLOCKWISE);
         }
         System.out.println("Fan Direction is " + getDirection());
     }
-
     @Override
-    public String getDirection() {
+    public Direction getDirection() {
         return this.direction;
     }
-
+    @Override
+    public void setDirection(Direction direction) {
+        this.direction = direction;
+    }
+    @Override
+    public void setSpeed(int speed) {
+        this.speed = speed;
+    }
     @Override
     public int getSpeed() {
         return this.speed;
-    }
-
-    private boolean checkAndHandleChristmas(){
-        if(DateComparisonUtils.isDateRestricted(LocalDate.now())){
-            this.speed = 0;
-            System.out.println("Fan has been turned off for Christmas");
-            return true;
-        }
-        return false;
     }
 }

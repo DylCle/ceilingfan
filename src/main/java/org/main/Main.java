@@ -7,8 +7,7 @@ public class Main {
         CeilingFan ceilingFan = new CeilingFan();
         Scanner scanner = new Scanner(System.in);
         boolean exit = false;
-        String input;
-        int command;
+
         System.out.print("""
                     =====MENU=====
                 [1] -> to pull speed cord.
@@ -17,12 +16,12 @@ public class Main {
                 [4] -> to see current speed.
                 """);
         do {
-            input = scanner.nextLine();
+            String input = scanner.nextLine();
             if(input.equalsIgnoreCase("exit")){
                 exit = true;
             } else {
                 try {
-                    command = Integer.parseInt(input);
+                    int command = Integer.parseInt(input);
                     switch (command) {
                         case 1 ->
                                 ceilingFan.pullSpeedCord();

@@ -1,5 +1,4 @@
 package org.main.datecomparison;
-
 import java.time.LocalDate;
 
 public interface DateCheck {
