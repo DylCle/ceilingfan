@@ -9,6 +9,4 @@ public interface Fan {
     String getDirection();
 
     int getSpeed();
-
-
 }
